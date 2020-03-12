@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\GreatBuilding;
+use App\Age;
 use Illuminate\Http\Request;
 
 class GreatBuildingController extends Controller
@@ -14,7 +15,11 @@ class GreatBuildingController extends Controller
      */
     public function index()
     {
-        //
+        $gbs = GreatBuilding::all();
+
+        return view('gbs.index', [
+            'gbs' => $gbs,
+        ]);
     }
 
     /**
@@ -24,7 +29,8 @@ class GreatBuildingController extends Controller
      */
     public function create()
     {
-        //
+        $ages = Age::pluck('ageShort', 'ageID');
+        return view('gbs.create')->with('ages', $ages);
     }
 
     /**
@@ -35,7 +41,14 @@ class GreatBuildingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $gb = new GreatBuilding();
+
+        $gb->gbName = request('gbName');
+        $gb->ageID = request('ageID');
+
+        $gb->save();
+
+        return redirect('/');
     }
 
     /**

@@ -1,8 +1,8 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 <div >
-    <h1>Create Age</h1>
+    <h1>Create Age:</h1>
     <form action="/ages" method="POST">
         @csrf
     <label for="name">Age Name:</label>

@@ -14,7 +14,11 @@ class BoostController extends Controller
      */
     public function index()
     {
-        //
+        $boosts = Boost::all();
+
+        return view('boosts.index', [
+            'boosts' => $boosts,
+        ]);
     }
 
     /**
@@ -24,7 +28,7 @@ class BoostController extends Controller
      */
     public function create()
     {
-        //
+        return view('boosts.create');
     }
 
     /**
@@ -35,7 +39,14 @@ class BoostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $boost = new Boost();
+
+        $boost->boostName = request('boostName');
+        
+
+        $boost->save();
+
+        return redirect('/');
     }
 
     /**

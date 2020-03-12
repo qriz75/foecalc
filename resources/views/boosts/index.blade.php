@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="wrapper index">
-        <h1>Ages</h1>
+        <h1>Boosts</h1>
         
     </div>
-    @foreach ($ages as $age)
+    @foreach ($boosts as $boost)
     <div>
-        {{$age->ageName}} - {{$age->ageShort}}
+        {{$boost->boostName}}
     </div>
 @endforeach
     
