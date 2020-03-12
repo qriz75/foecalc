@@ -16,7 +16,7 @@ class AgeController extends Controller
     {
         $ages = Age::all();
 
-        return view('ages', [
+        return view('ages.index', [
             'ages' => $ages,
         ]);
     }
@@ -26,9 +26,8 @@ class AgeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('ages.create');
     }
 
     /**
@@ -39,7 +38,14 @@ class AgeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $age = new Age();
+
+        $age->ageName = request('ageName');
+        $age->ageShort = request('ageShort');
+
+        $age->save();
+
+        return redirect('/');
     }
 
     /**

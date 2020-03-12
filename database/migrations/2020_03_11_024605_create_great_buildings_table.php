@@ -15,8 +15,11 @@ class CreateGreatBuildingsTable extends Migration
     {
         Schema::create('gbs', function (Blueprint $table) {
             $table->bigIncrements('gbID');
+            $table->unsignedBigInteger('ageID');
             $table->string('gbName');
             $table->timestamps();
+
+            $table->foreign('ageID')->references('ageID')->on('ages')->onDelete('cascade');
         });
       
         Schema::create('boost_gb', function (Blueprint $table) {

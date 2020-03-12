@@ -7,7 +7,7 @@
     </div>
     @foreach ($ages as $age)
     <div>
-        {{$age->name}}
+        {{$age->ageName}} - {{$age->ageShort}}
     </div>
 @endforeach
     

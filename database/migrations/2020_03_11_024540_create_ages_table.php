@@ -16,6 +16,7 @@ class CreateAgesTable extends Migration
         Schema::create('ages', function (Blueprint $table) {
             $table->bigIncrements('ageID');
             $table->string('ageName');
+            $table->string('ageShort');
             $table->timestamps();
         });
       
@@ -24,22 +25,10 @@ class CreateAgesTable extends Migration
             $table->integer('level');
           
             $table->integer('fp1st');
-            $table->integer('fp2nd');
-            $table->integer('fp3rd');
-            $table->integer('fp4th');
-            $table->integer('fp5th');
+
 
             $table->integer('medal1st');
-            $table->integer('medal2nd');
-            $table->integer('medal3rd');
-            $table->integer('medal4th');
-            $table->integer('medal5th');          
-
-            $table->integer('bp1st');
-            $table->integer('bp2nd');
-            $table->integer('bp3rd');
-            $table->integer('bp4th');
-            $table->integer('bp5th');     
+   
             
             $table->unsignedBigInteger('ageID');
             $table->string('age_level_data')->unique();
