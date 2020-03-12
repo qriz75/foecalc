@@ -14,7 +14,8 @@ class CreateBoostsTable extends Migration
     public function up()
     {
         Schema::create('boosts', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('boostID');
+            $table->string('boostName');
             $table->timestamps();
         });
     }

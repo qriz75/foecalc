@@ -14,7 +14,11 @@ class AgeController extends Controller
      */
     public function index()
     {
-        //
+        $ages = Age::all();
+
+        return view('ages', [
+            'ages' => $ages,
+        ]);
     }
 
     /**
