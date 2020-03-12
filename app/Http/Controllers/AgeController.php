@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Age;
+use Image;
 use Illuminate\Http\Request;
+
 
 class AgeController extends Controller
 {
@@ -42,10 +44,23 @@ class AgeController extends Controller
 
         $age->ageName = request('ageName');
         $age->ageShort = request('ageShort');
+        $age->ageDescription = request('ageDescription');
+        
+        if ($request->hasFile('ageImagePath'))
+        {
+            $file = $request->file('ageImagePath');
+            $name = $file->getClientOriginalName();
+            $file = $file->move(public_path().'/upload/ages/', $name);
+            $age->ageImagePath = $file->getRealPath();
+        }
 
         $age->save();
 
-        return redirect('/');
+        return redirect('/'); 
+
+        #dd($request->file('hqImage'));
+
+
     }
 
     /**

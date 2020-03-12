@@ -7,7 +7,7 @@
     </div>
     @foreach ($gbs as $gb)
     <div>
-        {{$gb->gbName}} - {{$gb->ageID}}
+       {{$gb->gbImage}} {{$gb->gbName}} - {{$gb->ageID}}
     </div>
 @endforeach
     

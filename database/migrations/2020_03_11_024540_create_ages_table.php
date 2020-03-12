@@ -17,15 +17,18 @@ class CreateAgesTable extends Migration
             $table->bigIncrements('ageID');
             $table->string('ageName');
             $table->string('ageShort');
+            $table->mediumText('ageDescription');
+            $table->mediumText('ageImagePath')->nullable();
             $table->timestamps();
         });
       
         Schema::create('age_level_data', function (Blueprint $table) {    
             
             $table->integer('level');
+
+            $table->integer('fpCost');
           
             $table->integer('fp1st');
-
 
             $table->integer('medal1st');
    

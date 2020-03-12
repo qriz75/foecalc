@@ -16,6 +16,8 @@ class CreateBoostsTable extends Migration
         Schema::create('boosts', function (Blueprint $table) {
             $table->bigIncrements('boostID');
             $table->string('boostName');
+            $table->mediumText('boostDescription');
+            $table->mediumText('boostImagePath')->nullable();
             $table->timestamps();
         });
     }

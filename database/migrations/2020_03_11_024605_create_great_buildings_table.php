@@ -17,6 +17,8 @@ class CreateGreatBuildingsTable extends Migration
             $table->bigIncrements('gbID');
             $table->unsignedBigInteger('ageID');
             $table->string('gbName');
+            $table->mediumText('gbDescription');
+            $table->mediumText('gbImagePath')->nullable();
             $table->timestamps();
 
             $table->foreign('ageID')->references('ageID')->on('ages')->onDelete('cascade');
