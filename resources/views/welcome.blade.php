@@ -24,9 +24,9 @@
         </div>
 
         <div class="links">
-            <a href="/gbs">Great Buildings</a>
             <a href="/ages">Ages</a>
             <a href="/boosts">Boosts</a>
+            <a href="/gbs">Great Buildings</a>
             <a href="/calculator">Calculator</a>
             <a href="/instructions">Instructions</a>
         </div>

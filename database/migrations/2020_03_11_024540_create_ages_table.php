@@ -18,7 +18,7 @@ class CreateAgesTable extends Migration
             $table->string('ageName');
             $table->string('ageShort');
             $table->mediumText('ageDescription');
-            $table->mediumText('ageImagePath')->nullable();
+            $table->mediumText('ageImage')->nullable();
             $table->timestamps();
         });
       

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Age;
 use Image;
+use DB;
 use Illuminate\Http\Request;
 
 
@@ -14,6 +15,12 @@ class AgeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'ages', 'show']]);
+    }
+
     public function index()
     {
         $ages = Age::all();
@@ -46,17 +53,21 @@ class AgeController extends Controller
         $age->ageShort = request('ageShort');
         $age->ageDescription = request('ageDescription');
         
-        if ($request->hasFile('ageImagePath'))
+        if ($request->hasFile('ageImage'))
         {
-            $file = $request->file('ageImagePath');
+            $file = $request->file('ageImage');
             $name = $file->getClientOriginalName();
-            $file = $file->move(public_path().'/upload/ages/', $name);
-            $age->ageImagePath = $file->getRealPath();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $age->ageImage = $name;
         }
+
+      
 
         $age->save();
 
-        return redirect('/'); 
+        return redirect('/ages')->with('success', 'Age created'); 
 
         #dd($request->file('hqImage'));
 
@@ -69,9 +80,12 @@ class AgeController extends Controller
      * @param  \App\Age  $age
      * @return \Illuminate\Http\Response
      */
-    public function show(Age $age)
+    public function show($ageID)
     {
-        //
+        $age = Age::find($ageID);
+        return view('ages.age')->with('age', $age);
+
+        return view('ages');
     }
 
     /**
@@ -80,9 +94,10 @@ class AgeController extends Controller
      * @param  \App\Age  $age
      * @return \Illuminate\Http\Response
      */
-    public function edit(Age $age)
+    public function edit($ageID)
     {
-        //
+        $age = Age::find($ageID);
+          return view('ages.edit')->with('age', $age);
     }
 
     /**
@@ -92,9 +107,27 @@ class AgeController extends Controller
      * @param  \App\Age  $age
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Age $age)
+    public function update(Request $request, $ageID)
     {
-        //
+        $age =Age::find($ageID);
+
+        $age->ageName = request('ageName');
+        $age->ageShort = request('ageShort');
+        $age->ageDescription = request('ageDescription');
+        
+       /*  if ($request->hasFile('ageImage'))
+        {
+            $file = $request->file('ageImage');
+            $name = $file->getClientOriginalName();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $age->ageImage = $name;
+        } */
+
+        $age->save();
+
+        return redirect('/ages')->with('success', 'Age updated');
     }
 
     /**
@@ -103,8 +136,11 @@ class AgeController extends Controller
      * @param  \App\Age  $age
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Age $age)
+    public function destroy($ageID)
     {
-        //
+        $age = Age::find($ageID);
+        $age->delete();
+
+        return redirect('/ages')->with('success', 'Age deleted');
     }
 }

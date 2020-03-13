@@ -20,8 +20,8 @@
         </div>
 
         <div class="form-group">
-            {{ Form::label('ageImagePath', 'Head Quarter Image:') }}
-            {{ Form::file('ageImagePath', null, ['class' => 'form-control'])}}
+            {{ Form::label('ageImage', 'Head Quarter Image:') }}
+            {{ Form::file('ageImage', null, ['class' => 'form-control'])}}
         </div>
 
         <div class="form-group">
