@@ -46,6 +46,11 @@
     text-align: left;
 }
 .logoContainer img{
+    
     width: 100%;
-    height: auto;
+    max-height: auto;
 }
+.text-responsive {
+    margin-left: 20%;
+    font-size: calc(100% + 1vw + 1vh);
+  }
