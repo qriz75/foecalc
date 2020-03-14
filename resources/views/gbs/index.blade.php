@@ -7,8 +7,8 @@
     <div class="gridOutside">
         @foreach($gbs as $gb)
         <div class="gridInside">
-            <h2><a href="/gbs/{{$gb->gbID}}"> {{$gb->gbShort}} </a><br></h2>    
-            <img src="img/gbs/{{$gb->gbImage}}" alt="Great Building Image" height="100" width="100">
+            <div class="text-responsive"><a href="/gbs/{{$gb->gbID}}"> {{$gb->gbShort}} </a><br></div>    
+            <img src="img/gbs/{{$gb->gbImage}}" alt="Great Building Image" height="auto" width="50%">
         </div>        
     
 

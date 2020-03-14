@@ -29,9 +29,9 @@
 }
 
 .gridInside{
-    display: inline-block;
-  background: rgba(0, 0, 0, 0.75);
-    width: 24%;
+    display: inline-block;    
+    background: rgba(0, 0, 0, 0.75);
+    width: 32%;
     max-height: 25%;
     
     border-radius: 5%;
