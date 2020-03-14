@@ -5,10 +5,9 @@
     
 
     <div class="content">
-        <div class="text-responsive"><h1>"I don't know ... It was supposed to be here !!!"</h1>
+        <div class="text-responsive"><h3>"I don't know ... It was supposed to be here !!!"</h3>
         <div class="title m-b-md">
-            <img src="img/404.gif" alt="foecalc">
-            <p></p>
+            <img src="img/404.gif" alt="foecalc">            
         </div>
     </div>
         

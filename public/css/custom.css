@@ -52,5 +52,5 @@
 }
 .text-responsive {
     margin-left: 20%;
-    font-size: calc(100% + 1vw + 1vh);
+    font-size: calc(90% + 1vw + 1vh);
   }

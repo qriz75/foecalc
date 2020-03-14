@@ -39,7 +39,8 @@
           <a type="button" href="/gbs" class="btn btn-primary" role="button">Go Back</a>
           @if(!Auth::guest())
           @if(Auth::user()->role == 'admin')          
-          <a type="button" href="/gbs/{{$gb->gbID}}/edit" class="btn btn-default" role="button">Edit</a> {!!Form::open(['action' => ['GreatBuildingController@destroy', $gb->gbID], 'method' => 'POST', 'class' => 'pull-right'])!!} {{Form::hidden('_method',
+          <a type="button" href="/gbs/{{$gb->gbID}}/edit" class="btn btn-default" role="button">Edit</a> 
+          {!!Form::open(['action' => ['GreatBuildingController@destroy', $gb->gbID], 'method' => 'POST', 'class' => 'pull-right'])!!} {{Form::hidden('_method',
           'DELETE')}} {{Form::submit('Delete', ['class' => 'btn btn-danger'])}} {!!Form::close()!!} 
           @endif
           @endif
