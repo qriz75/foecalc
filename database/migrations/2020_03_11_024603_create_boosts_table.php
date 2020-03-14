@@ -17,7 +17,7 @@ class CreateBoostsTable extends Migration
             $table->bigIncrements('boostID');
             $table->string('boostName');
             $table->mediumText('boostDescription');
-            $table->mediumText('boostImagePath')->nullable();
+            $table->mediumText('boostImage')->nullable();
             $table->timestamps();
         });
     }

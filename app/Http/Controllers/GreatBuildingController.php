@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\GreatBuilding;
 use App\Age;
+use DB;
+use Image;
 use Illuminate\Http\Request;
 
 class GreatBuildingController extends Controller
@@ -13,6 +15,12 @@ class GreatBuildingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'gbs', 'show']]);
+    }
+
     public function index()
     {
         $gbs = GreatBuilding::all();
@@ -44,11 +52,27 @@ class GreatBuildingController extends Controller
         $gb = new GreatBuilding();
 
         $gb->gbName = request('gbName');
+        $gb->gbShort = request('gbShort');
         $gb->ageID = request('ageID');
+        $gb->gbDescription = request('gbDescription');
+        $gb->gbImage = request('gbImage');
+        
+        if ($request->hasFile('gbImage'))
+        {
+            $file = $request->file('gbImage');
+            $name = $file->getClientOriginalName();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $gb->gbImage = $name;
+        }
+
+      
 
         $gb->save();
 
-        return redirect('/');
+        return redirect('/gbs')->with('success', 'Great Building created'); 
+
     }
 
     /**
@@ -57,10 +81,14 @@ class GreatBuildingController extends Controller
      * @param  \App\GreatBuilding  $greatBuilding
      * @return \Illuminate\Http\Response
      */
-    public function show(GreatBuilding $greatBuilding)
+    public function show($gbID)
     {
-        //
+        $gb = GreatBuilding::find($gbID);
+        return view('gbs.gb')->with('gb', $gb);
+
+        return view('gbs');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -68,9 +96,10 @@ class GreatBuildingController extends Controller
      * @param  \App\GreatBuilding  $greatBuilding
      * @return \Illuminate\Http\Response
      */
-    public function edit(GreatBuilding $greatBuilding)
+    public function edit($gbID)
     {
-        //
+        $gb = GreatBuilding::find($gbID);
+          return view('gbs.edit')->with('gb', $gb);
     }
 
     /**
@@ -80,10 +109,28 @@ class GreatBuildingController extends Controller
      * @param  \App\GreatBuilding  $greatBuilding
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, GreatBuilding $greatBuilding)
+    public function update(Request $request, $gb)
     {
-        //
+        $gb =GreatBuilding::find($gbID);
+
+        $gb->gbName = request('gbName');
+        $gb->gbDescription = request('gbDescription');
+        
+       /*  if ($request->hasFile('gbImage'))
+        {
+            $file = $request->file('gbImage');
+            $name = $file->getClientOriginalName();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $gb->gbImage = $name;
+        } */
+
+        $gb->save();
+
+        return redirect('/gbs')->with('success', 'Great Building updated');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -91,8 +138,11 @@ class GreatBuildingController extends Controller
      * @param  \App\GreatBuilding  $greatBuilding
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GreatBuilding $greatBuilding)
+    public function destroy($gb)
     {
-        //
+        $gb = Boost::find($gbID);
+        $gb->delete();
+
+        return redirect('/gbs')->with('success', 'Great Building deleted');
     }
 }

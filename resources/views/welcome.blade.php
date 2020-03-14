@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
     
@@ -20,8 +20,9 @@
 
     <div class="content">
         <div class="title m-b-md">
+            <div class="logoContainer">
             <img src="img/logo.png" alt="foecalc">
-        </div>
+        </div></div>
 
         <div class="links">
             <a href="/ages">Ages</a>

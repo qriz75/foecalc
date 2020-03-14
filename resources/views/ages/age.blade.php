@@ -4,10 +4,13 @@
   <div class="backdrop">
     <div class="well">
       <div class="row">
-        <div class="col-6">
-          <div class="ageName"><h1>{{$age->ageName}}<h1></div>
+        <div class="col-xs-12 col-sm-6 col-lg-8">
+          
+            <img src="../img/ages/{{$age->ageImage}}" alt="Age Headquarter">
+            <div class="ageName"><h1>{{$age->ageName}}<h1></div>
+                <div class="ageShort"><h4>is commonly abbreviated as: <br>{{$age->ageShort}}<h4></div>
         </div>
-            <div class="col-4">
+            <div class="col-xs-12 col-sm-8 col-lg-4">
               <div class="ageDescription"><h4>{{$age->ageDescription}}</h4></div>
             
             </div>
@@ -15,14 +18,14 @@
       </div>
       <div class="row">
         <div class="col-6">
-          <div class="ageShort"><h7>{{$age->ageShort}}<h7></div>
+          
         </div>
         <div class="col-6">
 
         </div>
       </div>
       <div class="row">
-          <img src="../img/ages/{{$age->ageImage}}" alt="Age Headquarter">
+          
 
       </div>
       <div class="row">

@@ -1,10 +1,51 @@
+.createContainer{
+    position: relative;
+  display: block;
+  width: auto;
+  min-height: 100vh;
+  display: block;
+  text-align: center;
+
+}
+
+.formOutter{
+    border: 3px solid goldenrod;  
+  background: rgba(0, 0, 0, 0.75);
+  color: whitesmoke;
+  height: auto;
+  width: auto;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 5%;
+  text-align: center;
+    
+}
+
 .gridOutside{
-    display: inline;
+   display: block;
+   background: rgba(46, 162, 197, 0.7);
+   
     
 }
 
 .gridInside{
-    width: 33.33%;
-    height: 200px;
-    float: left;
+    display: inline-block;
+  background: rgba(0, 0, 0, 0.75);
+    width: 24%;
+    max-height: 25%;
+    
+    border-radius: 5%;
+    padding: 1%;
+    color: darkgoldenrod;
+    margin-top: 1%;
+    align-content: center;
+}
+
+.form-group{
+    color: darkgoldenrod;
+    text-align: left;
+}
+.logoContainer img{
+    width: 100%;
+    height: auto;
 }

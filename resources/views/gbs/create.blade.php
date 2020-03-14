@@ -1,18 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-<div >
-    <h1>Create Great Building:</h1>
-    <form action="/gbs" method="POST">
-        @csrf
-    <label for="gbName">Building Name:</label>
-    <input type="text" id="gbName" name="gbName">
-    <label for="ageShort">Building Age:</label>
-    
-    {{  Form::select('ageID',$ages,null,['class' => 'required form-control select2','ageID'=>'ageShort']) }}
+<div class="createContainer">
+    <div class="jumbotron jumbotron-fluid">
+        <div class='formOutter'>
+            <h1>Create Great Building:</h1><h4>
+            {{ Form::open(['route' => 'gbs.store', 'files' => true]) }}
+                <div class="form-group">
+                    {{ Form::label('gbName', 'Great Building Name:') }}
+                    {{ Form::text('gbName', null, ['class' => 'form-control'])}}
+                </div>
 
-    <input type="submit" value="Add">
-    </form>
-</div>
-    
+                <div class="form-group">
+                    {{ Form::label('gbShort', 'Short Name:') }}
+                    {{ Form::text('gbShort', null, ['class' => 'form-control'])}}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('ageShort', 'Building Age:') }}
+                    {{ Form::select('ageID',$ages,null,['class' => 'required form-control select2','ageID'=>'ageShort'])}}
+                </div>   
+
+                <div class="form-group">
+                    {{ Form::label('gbDescription', 'Description:') }}
+                    {{ Form::textarea('gbDescription', null, ['class' => 'form-control'])}}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::label('gbImage', 'Thumbnail:') }}
+                    {{ Form::file('gbImage', null, ['class' => 'form-control'])}}
+                </div>
+
+                <div class="form-group">
+                    {{ Form::submit('Create Great Building', ['class' => 'btn btn-primary']) }}
+                </div></h4>
+
+            {{Form::close()}}
+        </div>
+    </div>
+</div>  
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Boost;
+use DB;
+use Image;
 use Illuminate\Http\Request;
 
 class BoostController extends Controller
@@ -12,6 +14,12 @@ class BoostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'boosts', 'show']]);
+    }
+
     public function index()
     {
         $boosts = Boost::all();
@@ -42,11 +50,23 @@ class BoostController extends Controller
         $boost = new Boost();
 
         $boost->boostName = request('boostName');
+        $boost->boostDescription = request('boostDescription');
         
+        if ($request->hasFile('boostImage'))
+        {
+            $file = $request->file('boostImage');
+            $name = $file->getClientOriginalName();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $boost->boostImage = $name;
+        }
+
+      
 
         $boost->save();
 
-        return redirect('/');
+        return redirect('/boosts')->with('success', 'Boost created'); 
     }
 
     /**
@@ -55,9 +75,12 @@ class BoostController extends Controller
      * @param  \App\Boost  $boost
      * @return \Illuminate\Http\Response
      */
-    public function show(Boost $boost)
+    public function show($boostID)
     {
-        //
+        $boost = Boost::find($boostID);
+        return view('boosts.boost')->with('boost', $boost);
+
+        return view('boosts');
     }
 
     /**
@@ -66,9 +89,10 @@ class BoostController extends Controller
      * @param  \App\Boost  $boost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Boost $boost)
+    public function edit($boostID)
     {
-        //
+        $boost = Boost::find($boostID);
+          return view('boosts.edit')->with('boost', $boost);
     }
 
     /**
@@ -78,9 +102,26 @@ class BoostController extends Controller
      * @param  \App\Boost  $boost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Boost $boost)
+    public function update(Request $request, $boost)
     {
-        //
+        $boost =Boost::find($boostID);
+
+        $boost->boostName = request('boostName');
+        $boost->boostDescription = request('boostDescription');
+        
+       /*  if ($request->hasFile('boostImage'))
+        {
+            $file = $request->file('boostImage');
+            $name = $file->getClientOriginalName();
+            $publicPath = public_path();
+            $imagePath = '/img/';
+            $file = $file->move($publicPath . $imagePath . $name);            
+            $boost->boostImage = $name;
+        } */
+
+        $boost->save();
+
+        return redirect('/boost')->with('success', 'Boost updated');
     }
 
     /**
@@ -89,8 +130,11 @@ class BoostController extends Controller
      * @param  \App\Boost  $boost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Boost $boost)
+    public function destroy($boost)
     {
-        //
+        $boost = Boost::find($boostID);
+        $boost->delete();
+
+        return redirect('/boost')->with('success', 'Boost deleted');
     }
 }

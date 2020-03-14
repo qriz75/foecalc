@@ -17,8 +17,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom.css">
+    
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -128,9 +129,11 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
+                                    @if(Auth::user()->role == 'admin') 
                                     <a class="dropdown-item" href="{{ route('ages.create') }}">Create Age</a>
                                     <a class="dropdown-item" href="{{ route('boosts.create') }}">Create Boost</a>
                                     <a class="dropdown-item" href="{{ route('gbs.create') }}">Create GB</a>
+                                    @endif
                                 </div>
                             </li>
                         @endguest
