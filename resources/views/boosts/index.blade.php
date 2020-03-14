@@ -7,8 +7,9 @@
     <div class="gridOutside">
         @foreach($boosts as $boost)
         <div class="gridInside">
-            <div class="text-responsive"><a href="/boosts/{{$boost->boostID}}"> {{$boost->boostName}} </a><br></div>
+            
             <img src="img/boosts/{{$boost->boostImage}}" alt="Boost Image" height="auto" width="50%">
+            <div class="text-responsive"><a href="/boosts/{{$boost->boostID}}"> {{$boost->boostName}} </a><br></div>
         </div>        
     
 

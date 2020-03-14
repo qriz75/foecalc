@@ -29,10 +29,11 @@
 }
 
 .gridInside{
-    display: inline-block;    
+    display: table-cell;    
     background: rgba(0, 0, 0, 0.75);
-    width: 32%;
-    max-height: 25%;
+    width: 24%;
+    height: auto;
+    vertical-align: top;
     
     border-radius: 5%;
     padding: 1%;
@@ -52,7 +53,7 @@
 }
 .text-responsive {
     
-    font-size: calc(90% + 1vw + 1vh);
+    font-size: calc(50% + 1vw + 1vh);
   }
   .wrapper404{
     width: calc(90% + 1vw +1vh);
