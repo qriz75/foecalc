@@ -29,7 +29,7 @@
             <a href="/boosts">Boosts</a>
             <a href="/gbs">Great Buildings</a>
             <a href="/calculator">Calculator</a>
-            <a href="/instructions">Instructions</a>
+            <a href="https://docs.google.com/document/d/1hAANF7MgYWDYUCkSKa4uknCG8ZNC_MWnb4w7zuCT1yY/edit?usp=sharing">Instructions</a>
         </div>
     </div>
 </div>
