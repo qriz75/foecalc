@@ -29,12 +29,12 @@
 }
 
 .gridInside{
-    display: table-cell;    
+    display: inline-block;    
     background: rgba(0, 0, 0, 0.75);
     width: 24%;
     height: auto;
     vertical-align: top;
-    
+    border: darkgoldenrod 3px solid;
     border-radius: 5%;
     padding: 1%;
     color: darkgoldenrod;
