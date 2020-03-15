@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="jumbotron">
+<div class="createContainer">
+    <div class="jumbotron jumbotron-fluid">
+        <div class='formOutter'>
     <h1>Update Age:</h1>
     {{ Form::open(['action' => [ 'AgeController@update', $age->ageID], 'method' => 'POST', 'files' => true]) }}
         <div class="form-group">
@@ -29,7 +31,8 @@
             {{ Form::submit('Update Age', ['class' => 'btn btn-primary']) }}
         </div>
 
-    {{Form::close()}}
+        {{Form::close()}}
+    </div>
 </div>
-    
+</div>  
 @endsection

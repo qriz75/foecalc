@@ -83,7 +83,7 @@ class GreatBuildingController extends Controller
      */
     public function show($gbID)
     {
-        $gb = GreatBuilding::find($gbID);
+        $gb = GreatBuilding::find($gbID);        
         return view('gbs.gb')->with('gb', $gb);
 
         return view('gbs');
@@ -98,8 +98,9 @@ class GreatBuildingController extends Controller
      */
     public function edit($gbID)
     {
+        //$ages = Age::pluck('ageShort', 'ageID');
         $gb = GreatBuilding::find($gbID);
-          return view('gbs.edit')->with('gb', $gb);
+        return view('gbs.edit')->with('gb', $gb);
     }
 
     /**
@@ -109,13 +110,17 @@ class GreatBuildingController extends Controller
      * @param  \App\GreatBuilding  $greatBuilding
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $gb)
+    public function update(Request $request, $gbID)
     {
-        $gb =GreatBuilding::find($gbID);
+        $gb = GreatBuilding::find($gbID);
 
         $gb->gbName = request('gbName');
         $gb->gbDescription = request('gbDescription');
-        
+        $gb->gbShort = request('gbShort');
+
+        //$age->ageID = request('ageID');
+        //$gb->gbImage = request('gbImage');
+
        /*  if ($request->hasFile('gbImage'))
         {
             $file = $request->file('gbImage');

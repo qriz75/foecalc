@@ -8,6 +8,7 @@
           
             <img src="../img/gbs/{{$gb->gbImage}}" alt="Great Building Image">
             <div class="gbName"><h1>{{$gb->gbName}}<h1></div>
+            <div class="gbAge"><h4>{{$gb->ageID}}</h4></div> 
                 
         </div>
             <div class="col-xs-12 col-sm-8 col-lg-4">

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="jumbotron">
+<div class="createContainer">
+    <div class="jumbotron jumbotron-fluid">
+        <div class='formOutter'>
     <h1>Update Boost:</h1>
     {{ Form::open(['action' => [ 'BoostController@update', $boost->boostID], 'method' => 'POST', 'files' => true]) }}
         <div class="form-group">
@@ -28,3 +30,4 @@
 </div>
     
 @endsection
+
