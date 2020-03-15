@@ -37,8 +37,8 @@ class GreatBuildingController extends Controller
      */
     public function create()
     {
-        $ages = Age::pluck('ageShort', 'ageID');
-        return view('gbs.create')->with('ages', $ages);
+        $age = Age::pluck('ageShort', 'ageID');
+        return view('gbs.create')->with('age', $age);
     }
 
     /**
@@ -83,10 +83,11 @@ class GreatBuildingController extends Controller
      */
     public function show($gbID)
     {
+        $age = Age::pluck('ageShort', 'ageID');
         $gb = GreatBuilding::find($gbID);        
-        return view('gbs.gb')->with('gb', $gb);
+        return view('gbs.gb', [ 'gb' => $gb, 'age' => $age]);
 
-        return view('gbs');
+        // return view('gbs');
     }
 
 
@@ -98,9 +99,9 @@ class GreatBuildingController extends Controller
      */
     public function edit($gbID)
     {
-        //$ages = Age::pluck('ageShort', 'ageID');
+        $age = Age::pluck('ageShort', 'ageID');
         $gb = GreatBuilding::find($gbID);
-        return view('gbs.edit')->with('gb', $gb);
+        return view('gbs.edit', [ 'gb' => $gb, 'ages' => $age]);
     }
 
     /**
@@ -118,7 +119,7 @@ class GreatBuildingController extends Controller
         $gb->gbDescription = request('gbDescription');
         $gb->gbShort = request('gbShort');
 
-        //$age->ageID = request('ageID');
+        $age->ageID = request('ageID');
         //$gb->gbImage = request('gbImage');
 
        /*  if ($request->hasFile('gbImage'))
@@ -145,7 +146,7 @@ class GreatBuildingController extends Controller
      */
     public function destroy($gb)
     {
-        $gb = Boost::find($gbID);
+        $gb = GreatBuilding::find($gbID);
         $gb->delete();
 
         return redirect('/gbs')->with('success', 'Great Building deleted');

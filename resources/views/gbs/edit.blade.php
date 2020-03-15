@@ -5,7 +5,7 @@
     <div class="jumbotron jumbotron-fluid">
         <div class='formOutter'>
             <h1>Edit Great Building:</h1><h4>
-            {{ Form::open(['route' => 'gbs.store', 'files' => true]) }}
+                {{ Form::open(['action' => [ 'GreatBuildingController@update', $gb->gbID], 'method' => 'POST', 'files' => true]) }}
                 <div class="form-group">
                     {{ Form::label('gbName', 'Great Building Name:') }}
                     {{ Form::text('gbName', $gb->gbName, ['class' => 'form-control'])}}
@@ -16,10 +16,10 @@
                     {{ Form::text('gbShort', $gb->gbShort, ['class' => 'form-control'])}}
                 </div>
 
-                {{-- <div class="form-group">
+               <div class="form-group">
                     {{ Form::label('ageShort', 'Building Age:') }}
-                    {{ Form::select('ageID',$ages,null,['class' => 'required form-control select2','ageID'=>'ageShort'])}}
-                </div>   --}} 
+                    {{ Form::select('ageID',$age, $gb->ageID ,['class' => 'required form-control select2','ageID'=>'ageShort'])}}
+                </div>
 
                 <div class="form-group">
                     {{ Form::label('gbDescription', 'Description:') }}
@@ -32,6 +32,7 @@
                 </div> --}}
 
                 <div class="form-group">
+                    {{ Form::hidden('_method', 'PUT')}}
                     {{ Form::submit('Edit Great Building', ['class' => 'btn btn-primary']) }}
                 </div></h4>
 

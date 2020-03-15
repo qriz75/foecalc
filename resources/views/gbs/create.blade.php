@@ -18,7 +18,7 @@
 
                 <div class="form-group">
                     {{ Form::label('ageShort', 'Building Age:') }}
-                    {{ Form::select('ageID',$ages,null,['class' => 'required form-control select2','ageID'=>'ageShort'])}}
+                    {{ Form::select('ageID',$age,null,['class' => 'required form-control select2','ageID'=>'ageShort'])}}
                 </div>   
 
                 <div class="form-group">

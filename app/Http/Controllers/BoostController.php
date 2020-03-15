@@ -102,7 +102,7 @@ class BoostController extends Controller
      * @param  \App\Boost  $boost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $boost)
+    public function update(Request $request, $boostID)
     {
         $boost =Boost::find($boostID);
 
@@ -121,7 +121,7 @@ class BoostController extends Controller
 
         $boost->save();
 
-        return redirect('/boost')->with('success', 'Boost updated');
+        return redirect('/boosts')->with('success', 'Boost updated');
     }
 
     /**
