@@ -58,3 +58,6 @@
   .wrapper404{
     width: calc(90% + 1vw +1vh);
   }
+  .gbName{
+    font-size: calc(100% + 1vw + 1vh);
+  }

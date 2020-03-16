@@ -5,20 +5,12 @@
     <div class="well">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-lg-8">
-          
-            <img src="../img/gbs/{{$gb->gbImage}}" alt="Great Building Image">
-            <div class="gbName"><h1>{{$gb->gbName}}<h1></div>
-            <div class="gbShort"><h4>{{$gb->gbShort}}</h4></div>   
-              {{-- dd($age) --}}
-            <div class="gbAge"><h4>{{$gb->age->ageShort}}</h4></div>
-            
-                
-        </div>
+          <div class="gbName"><h2>{{$gb->gbName}} - {{$gb->gbShort}}</h2></div>
+            <div class="gbAge"><h4>{{$gb->age->ageName}}</h4></div>
+            <img src="../img/gbs/{{$gb->gbImage}}" alt="Great Building Image"></div>
             <div class="col-xs-12 col-sm-8 col-lg-4">
-              <div class="gbDescription"><h4>{{$gb->gbDescription}}</h4></div>
-            
+              <div class="gbDescription"><h4>{{$gb->gbDescription}}</h4></div>            
             </div>
-
       </div>
       <div class="row">
         <div class="col-6">
