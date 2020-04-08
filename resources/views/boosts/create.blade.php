@@ -5,28 +5,25 @@
     <div class="jumbotron jumbotron-fluid">
         <div class='formOutter'>
             <h1>Create Boost:</h1><h4>
-            {{ Form::open(['route' => 'boosts.store', 'files' => true]) }}
-                <div class="form-group">
-                    {{ Form::label('boostName', 'Boost Name:') }}
-                    {{ Form::text('boostName', null, ['class' => 'form-control'])}}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('boostDescription', 'Description:') }}
-                    {{ Form::textarea('boostDescription', null, ['class' => 'form-control'])}}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::label('boostImage', 'Thumbnail:') }}
-                    {{ Form::file('boostImage', null, ['class' => 'form-control'])}}
-                </div>
-
-                <div class="form-group">
-                    {{ Form::submit('Create Boost', ['class' => 'btn btn-primary']) }}
-                </div></h4>
-
-            {{Form::close()}}
+                <form action="{{route('boosts.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Boost Name</label>
+                        <input type="text" class="form-control" id="boostName" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" id="boostDescription" name="description" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Thumbnail</label>
+                        <input type="file" name="image" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Create Boost</button>
+                    </div></h4>
+                </form>
         </div>
     </div>
-</div>  
+</div>
 @endsection

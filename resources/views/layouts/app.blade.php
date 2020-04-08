@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -129,10 +129,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                    @if(Auth::user()->role == 'admin') 
+                                    @if(Auth::user()->role == 'admin')
                                     <a class="dropdown-item" href="{{ route('ages.create') }}">Create Age</a>
                                     <a class="dropdown-item" href="{{ route('boosts.create') }}">Create Boost</a>
-                                    <a class="dropdown-item" href="{{ route('gbs.create') }}">Create GB</a>
+                                    <a class="dropdown-item" href="{{ route('buildings.create') }}">Create GB</a>
                                     @endif
                                 </div>
                             </li>
@@ -149,7 +149,7 @@
             <div class="links">
                 <a href="/ages">Ages</a>
                 <a href="/boosts">Boosts</a>
-                <a href="/gbs">Great Buildings</a>
+                <a href="/buildings">Great Buildings</a>
                 <a href="/calculator">Calculator</a>
                 <a href="https://docs.google.com/document/d/1hAANF7MgYWDYUCkSKa4uknCG8ZNC_MWnb4w7zuCT1yY/edit?usp=sharing">Instructions</a>
             </div>

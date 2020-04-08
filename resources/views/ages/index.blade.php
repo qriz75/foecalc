@@ -7,11 +7,11 @@
     <div class="gridOutside">
         @foreach($ages as $age)
         <div class="gridInside">
-                
-            <img src="img/ages/{{$age->ageImage}}" alt="Age Headquarter" height="auto" width="50%">
-            <div class="text-responsive"><a href="/ages/{{$age->ageID}}"> {{$age->ageShort}} </a><br></div>
-        </div>        
-    
+
+            <img src="/storage/img/ages/{{$age->image}}" alt="Age Headquarter" height="auto" width="50%">
+            <div class="text-responsive"><a href="/ages/{{$age->id}}"> {{$age->short}} </a><br></div>
+        </div>
+
 
 @endforeach
     </div>

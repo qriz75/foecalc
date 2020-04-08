@@ -1,19 +1,19 @@
 <?php
 
 namespace App;
-use GreatBuildings;
+use Buildings;
 use Illuminate\Database\Eloquent\Model;
 
 class Age extends Model
 {
     protected $table = 'ages';
-    protected $fillable = ['ageName','ageShort','ageDescription','ageImage'];
+    protected $fillable = ['name','short','description','image'];
 
-    public $primaryKey = 'ageID';
+    public $primaryKey = 'id';
 
-    public function GreatBuildings()
+    public function Buildings()
    {
-          return $this->hasMany('App\GreatBuilding', 'ageID', 'ageID'); 
+          return $this->hasMany(Building::class);
     }
-    
+
 }

@@ -9,7 +9,7 @@
 }
 
 .formOutter{
-    border: 3px solid goldenrod;  
+    border: 3px solid goldenrod;
   background: rgba(0, 0, 0, 0.75);
   color: whitesmoke;
   height: auto;
@@ -18,20 +18,20 @@
   margin: 2%;
   border-radius: 5%;
   text-align: center;
-    
+
 }
 
 .gridOutside{
    display: block;
    background: rgba(46, 162, 197, 0.7);
-   
-    
+
+
 }
 
 .gridInside{
-    display: inline-block;    
+    display: inline-block;
     background: rgba(0, 0, 0, 0.75);
-    width: 24%;
+    width: 32%;
     height: auto;
     vertical-align: top;
     border: darkgoldenrod 3px solid;
@@ -47,17 +47,30 @@
     text-align: left;
 }
 .logoContainer img{
-    
+
     width: 100%;
     max-height: auto;
 }
 .text-responsive {
-    
+
     font-size: calc(50% + 1vw + 1vh);
+    text-align: center;
   }
   .wrapper404{
     width: calc(90% + 1vw +1vh);
   }
   .gbName{
     font-size: calc(100% + 1vw + 1vh);
+  }
+
+  .boostSelector{
+    display: block;
+    border: 2px solid red;
+  }
+
+  .singleBoost{
+    display: inline-block;
+    border: 2px solid blue;
+    color: darkgoldenrod;
+
   }

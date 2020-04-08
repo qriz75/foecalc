@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBoostsTable extends Migration
+class CreateBuildingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,19 @@ class CreateBoostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('boosts', function (Blueprint $table) {
+        Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->unsignedBigInteger('age_id');
+            $table->string('name')->unique();
+            $table->string('short');
             $table->mediumText('description');
             $table->mediumText('image')->nullable();
             $table->timestamps();
+
+            $table->foreign('age_id')->references('id')->on('ages')->onDelete('cascade');
         });
+
+
     }
 
     /**
@@ -29,6 +35,6 @@ class CreateBoostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('boosts');
+        Schema::dropIfExists('buildings');
     }
 }

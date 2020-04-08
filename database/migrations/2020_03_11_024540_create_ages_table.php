@@ -14,32 +14,32 @@ class CreateAgesTable extends Migration
     public function up()
     {
         Schema::create('ages', function (Blueprint $table) {
-            $table->bigIncrements('ageID');
-            $table->string('ageName');
-            $table->string('ageShort');
-            $table->mediumText('ageDescription');
-            $table->mediumText('ageImage')->nullable();
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->string('short');
+            $table->mediumText('description');
+            $table->mediumText('image')->nullable();
             $table->timestamps();
         });
-      
-        Schema::create('age_level_data', function (Blueprint $table) {    
-            
+
+        /* Schema::create('age_level_data', function (Blueprint $table) {
+
             $table->integer('level');
 
             $table->integer('fpCost');
-          
+
             $table->integer('fp1st');
 
             $table->integer('medal1st');
-   
-            
+
+
             $table->unsignedBigInteger('ageID');
             $table->string('age_level_data')->unique();
-          
-            $table->timestamps();            
-          
+
+            $table->timestamps();
+
             $table->foreign('ageID')->references('ageID')->on('ages')->onDelete('cascade');
-        });
+        });*/
     }
 
     /**

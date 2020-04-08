@@ -1,13 +1,18 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Boost extends Model
 {
     protected $table = 'boosts';
-    protected $fillable = ['boostName','boostDescription','boostImage'];
+    protected $fillable = ['name','description','image'];
 
-    public $primaryKey = 'boostID';
+    public $primaryKey = 'id';
+
+    public function buildings()
+    {
+        return $this->belongsToMany(Building::class);
+    }
+
 }

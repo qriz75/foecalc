@@ -5,29 +5,29 @@
     <div class="jumbotron jumbotron-fluid">
         <div class='formOutter'>
     <h1>Update Boost:</h1>
-    {{ Form::open(['action' => [ 'BoostController@update', $boost->boostID], 'method' => 'POST', 'files' => true]) }}
+    <form  method="post" action="{{ route('boosts.update', $boost->id) }}" enctype="multipart/form-data">
+        @csrf
         <div class="form-group">
-            {{ Form::label('boostName', 'Boost Name:') }}
-            {{ Form::text('boostName', $boost->boostName, ['class' => 'form-control'])}}
+            <label for="name">Boost Name</label>
+            <input type="text" class="form-control" id="boostName" name="name" value="{{ $boost->name}}">
         </div>
-
         <div class="form-group">
-            {{ Form::label('boostDescription', 'Description:') }}
-            {{ Form::textarea('boostDescription', $boost->boostDescription, ['class' => 'form-control'])}}
+            <label for="description">Description</label>
+            <textarea class="form-control" id="boostDescription" name="description" rows="5">{{ $boost->description}}</textarea>
         </div>
-
-        {{-- <div class="form-group">
-            {{ Form::label('boostImage', 'Boost Image:') }}
-            {{ Form::file('boostImage', $boost->boostImage, ['class' => 'form-control'])}}
-        </div> --}}
-
         <div class="form-group">
-            {{ Form::hidden('_method', 'PUT')}}
-            {{ Form::submit('Update Boost', ['class' => 'btn btn-primary']) }}
+            <label for="image">Thumbnail</label>
+            <input type="file" name="image" class="form-control">
         </div>
+        <img src="/storage/img/boosts/{{ $boost->image}}" height="50" width="50">
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update Boost</button>
+            <input name="_method" type="hidden" value="PUT">
+        </div></h4>
 
-    {{Form::close()}}
+    </form>
+
 </div>
-    
+
 @endsection
 
