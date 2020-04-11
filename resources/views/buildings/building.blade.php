@@ -13,8 +13,8 @@
 
             <div class="col-xs-12 col-sm-8 col-lg-4">
               <div class="boosts">
-                  @foreach ($boost as $boost)
-                      <img src="../storage/img/boosts/{{$boost}}" alt="Great Building Image" height="50vh">
+                  @foreach ($building->boosts as $boost)
+                      <img src="../storage/img/boosts/{{$boost->image}}" alt="Great Building Image" height="50vh">
                   @endforeach
 
               </div>

@@ -10,12 +10,12 @@
             <div class="row">
                 <div class="col-8">
 
-                    <img src="storage/img/buildings/{{$building->image}}" alt="Great Building Image" height="100vh" width="auto%">
+                    <img class="gbImage" src="storage/img/buildings/{{$building->image}}" alt="Great Building Image">
                 </div>
                 <div class="col-4">
-                    @foreach ($boosts as $boost)
+                    @foreach ($building->boosts as $boost)
 
-                        <img src="storage/img/boosts/{{$boost}}" alt="Boost Image" height="auto" width="50%">
+                        <img class="boostImage" src="storage/img/boosts/{{$boost->image}}" alt="Boost Image">
 
                     @endforeach
                 </div>

@@ -13,14 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-}); */
+});
 
 Auth::routes(['register' => true]);
 
-Route::get('/', 'HomeController@index')->name('welcome');
-Route::get('/welcome', 'HomeController@index')->name('welcome');
+//Route::get('/', 'HomeController@index')->name('welcome');
+Route::get('welcome', 'WelcomeController@index')->name('welcome');
 Route::resource('ages', 'AgeController');
 Route::resource('boosts', 'BoostController');
 Route::resource('buildings', 'BuildingController');

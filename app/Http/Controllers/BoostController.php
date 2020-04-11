@@ -51,13 +51,15 @@ class BoostController extends Controller
 
         $boost->name = request('name');
         $boost->description = request('description');
+      dd($request);
 
         if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $imagePath = 'storage/img/boosts';
-            $file = $file->move($imagePath . $name);
+            $publicPath = public_path();
+            $imagePath = '/storage/img/boosts';
+            $file = $file->move($publicPath . $imagePath . $name);
             $boost->image = $name;
         }
 
@@ -102,9 +104,9 @@ class BoostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $boost =Boost::find($id);
-
+    { 
+     
+        $boost = Boost::find($id);
         $boost->name = request('name');
         $boost->description = request('description');
 
@@ -112,9 +114,9 @@ class BoostController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            //$publicPath = public_path();
-            $imagePath = '/storage/img/boosts/';
-            $file = $file->move($imagePath . $name);
+            $publicPath = public_path();
+            $imagePath = '/storage/img/boosts';
+            $file = $file->move($publicPath . $imagePath . $name);
             $boost->image = $name;
         }
 

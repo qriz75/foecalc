@@ -57,9 +57,9 @@ class AgeController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            // $publicPath = public_path();
+            $publicPath = public_path();
             $imagePath = '/storage/img/ages/';
-            $file = $file->move($imagePath . $name);
+            //$file = $file->move($imagePath . $name);
             $age->image = $name;
         }
 
@@ -119,10 +119,10 @@ class AgeController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            /* $publicPath = public_path();
-            dd($publicPath); */
+            $publicPath = public_path();
+            //dd($publicPath);
             $imagePath = '/storage/img/ages/';
-            $file = $file->move($imagePath . $name);
+            $file = $file->move($publicPath . $imagePath . $name);
             $age->image = $name;
             //dd($name);
         }

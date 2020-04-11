@@ -64,7 +64,7 @@ class BuildingController extends Controller
         $building->name = request('name');
         $building->short = request('short');
         $building->age_id = request('id');
-        //dd($request);
+        //dd($request->input());
         $building->description = request('description');
         $building->image = request('image');
 
@@ -72,15 +72,16 @@ class BuildingController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $imagePath = 'storage/img/buildings';
-            $file = $file->move($imagePath . $name);
+            $publicPath = public_path();
+            $imagePath = '/storage/img/buildings';
+            $file = $file->move($publicPath . $imagePath . $name);
             $building->image = $name;
         }
 
         $building->save();
 
         //dd($boosts);
-        $building->boosts()->attach($boosts);
+        $building->boosts()->attach($request->boost);
 
         return redirect('/buildings')->with('success', 'Great Building created');
 
@@ -111,11 +112,31 @@ class BuildingController extends Controller
      */
     public function edit($id)
     {
-        $boosts = Boost::pluck('name', 'id');
-        $age = Age::pluck('short', 'id');
         $building = Building::find($id);
+        
+        $boosts = Boost::all();
+        $age = Age::all();
+        //dd($building->id);
+      
+      //just get the itens associated with profile from the pivot table, returned as an array
+	$checkeds = DB::table('boost_building')->where('building_id','=',$id)->pluck('boost_id')->toArray();
+		
+	
+
+      
+      
+//        $checkeds = Boost::whereHas('buildings', function ($query) {
+//          return $query->where('boost_building'->id, $building->id);
+//        })->get();
+      
+//         $checked = Building::whereHas('boosts')->get();
+      //dd($checkeds);
+       //
         //$building->boost()->attach($boostID);
-        return view('buildings.edit', [ 'building' => $building, 'ages' => $age, 'boosts' => $boosts]);
+        return view('buildings.edit', [ 'building' => $building, 'ages' => $age, 'boosts' => $boosts, 'checkeds' => $checkeds]);
+        //return view('buildings.edit')->withBuilding($building)->withBoosts($xBoosts);
+      
+      
     }
 
     /**
@@ -130,23 +151,24 @@ class BuildingController extends Controller
         $building = Building::find($id);
 
         $building->name = request('name');
-        $building->description = request('description');
         $building->short = request('short');
-        $building->id = request('id');
-        $building->id = request('id');
-        //$building->buildingImage = request('buildingImage');
+        $building->age_id = request('id');
+        //dd($request->input('boost'));
+        $building->description = request('description');
+        $building->image = request('image');
 
         if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            //$publicPath = public_path();
-            $imagePath = 'storage/img/buildings';
-            $file = $file->move($imagePath . $name);
-            $building->buildingImage = $name;
+            $publicPath = public_path();
+            $imagePath = '/storage/img/buildings';
+            $file = $file->move($publicPath . $imagePath . $name);
+            $building->image = $name;
         }
 
         $building->save();
+        $building->boosts()->sync($request->input('boost'));
 
         return redirect('/buildings')->with('success', 'Great Building updated');
     }

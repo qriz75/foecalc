@@ -72,5 +72,16 @@
     display: inline-block;
     border: 2px solid blue;
     color: darkgoldenrod;
-
   }
+
+.gbImage{
+  width: auto ;
+  max-width: 100% ;
+  height: auto ;  
+}
+
+.boostImage{
+  width: auto ;
+  max-width: 100% ;
+  height: auto ;  
+}

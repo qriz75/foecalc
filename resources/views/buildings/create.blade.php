@@ -31,7 +31,7 @@
                         @foreach ($boosts as $boost)
                             <div class="singleBoost">
                                 <img src="/storage/img/boosts/{{ $boost['image'] }}"  alt="{{$boost->name}}" title="{{$boost->name}} --> {{$boost->description}}" height="60px">
-                                <input type="checkbox" name="boost" value="{{ $boost->id }}">
+                                <input type="checkbox" name="boost[]" value="{{ $boost->id }}">
                             </div>
                         @endforeach
                     </div>
