@@ -8,7 +8,7 @@
         @foreach($ages as $age)
         <div class="gridInside">
 
-            <img src="/storage/img/ages/{{$age->image}}" alt="Age Headquarter" height="auto" width="50%">
+            <img src="/uploaded-images/ages/{{$age->image}}" alt="Age Headquarter" height="auto" width="50%">
             <div class="text-responsive"><a href="/ages/{{$age->id}}"> {{$age->short}} </a><br></div>
         </div>
 

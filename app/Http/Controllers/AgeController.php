@@ -58,8 +58,9 @@ class AgeController extends Controller
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
             $publicPath = public_path();
-            $imagePath = '/storage/img/ages/';
-            //$file = $file->move($imagePath . $name);
+            //dd($publicPath); */
+            $imagePath = public_path()."/uploaded-images/ages/".$name;
+            $file = $file->storeAs("app/public/images/ages/", $name);//$imagePath);
             $age->image = $name;
         }
 
@@ -109,28 +110,35 @@ class AgeController extends Controller
      */
     public function update(Request $request, $id)
     {
+$log=[];
         $age =Age::find($id);
 
         $age->name = request('name');
         $age->short = request('short');
         $age->description = request('description');
+//dd(storage_path('app'));
 
        if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
             $publicPath = public_path();
-            //dd($publicPath);
-            $imagePath = '/storage/img/ages/';
-            $file = $file->move($publicPath . $imagePath . $name);
+            $imagePath = public_path()."/uploaded-images/ages/".$name;
+$log[] = "image path : ".var_export($imagePath, true);
+            $file = $file->storeAs("public/images/ages/", $name);//$imagePath);
+//            $file = $file->storeAs($imagePath);
+//move($imagePath); //$publicPath . $imagePath . $name);
+$log[] = "file : ".var_export($file, true);
             $age->image = $name;
             //dd($name);
         }
+     
 
 
 
         $age->save();
-
+$log[] = "test";
+//dd($log);
         return redirect('/ages')->with('success', 'Age updated');
     }
 
