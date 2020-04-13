@@ -57,21 +57,14 @@ class AgeController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $publicPath = public_path();
-            //dd($publicPath); */
-            $imagePath = public_path()."/uploaded-images/ages/".$name;
-            $file = $file->storeAs("app/public/images/ages/", $name);//$imagePath);
+            $imagePath = "public/img/ages/";
+            $file = $file->storeAs($imagePath, $name);
             $age->image = $name;
         }
 
-
-        //dd($imagePath);
         $age->save();
 
         return redirect('/ages')->with('success', 'Age created');
-
-        #dd($request->file('hqImage'));
-
 
     }
 
@@ -84,6 +77,7 @@ class AgeController extends Controller
     public function show($id)
     {
         $age = Age::find($id);
+      
         return view('ages.age')->with('age', $age);
 
         return view('ages');
@@ -110,35 +104,22 @@ class AgeController extends Controller
      */
     public function update(Request $request, $id)
     {
-$log=[];
         $age =Age::find($id);
-
         $age->name = request('name');
         $age->short = request('short');
         $age->description = request('description');
-//dd(storage_path('app'));
 
        if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $publicPath = public_path();
-            $imagePath = public_path()."/uploaded-images/ages/".$name;
-$log[] = "image path : ".var_export($imagePath, true);
-            $file = $file->storeAs("public/images/ages/", $name);//$imagePath);
-//            $file = $file->storeAs($imagePath);
-//move($imagePath); //$publicPath . $imagePath . $name);
-$log[] = "file : ".var_export($file, true);
+            $imagePath = "public/img/ages/";
+            $file = $file->storeAs($imagePath, $name);
             $age->image = $name;
-            //dd($name);
         }
-     
-
-
 
         $age->save();
-$log[] = "test";
-//dd($log);
+
         return redirect('/ages')->with('success', 'Age updated');
     }
 

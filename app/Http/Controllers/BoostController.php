@@ -51,19 +51,15 @@ class BoostController extends Controller
 
         $boost->name = request('name');
         $boost->description = request('description');
-      dd($request);
 
         if ($request->hasFile('image'))
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $publicPath = public_path();
-            $imagePath = '/storage/img/boosts';
-            $file = $file->move($publicPath . $imagePath . $name);
+            $imagePath = "public/img/boosts/";
+            $file = $file->storeAs($imagePath, $name);
             $boost->image = $name;
         }
-
-
 
         $boost->save();
 
@@ -114,9 +110,8 @@ class BoostController extends Controller
         {
             $file = $request->file('image');
             $name = $file->getClientOriginalName();
-            $publicPath = public_path();
-            $imagePath = '/storage/img/boosts';
-            $file = $file->move($publicPath . $imagePath . $name);
+            $imagePath = "public/img/boosts/";
+            $file = $file->storeAs($imagePath, $name);
             $boost->image = $name;
         }
 
